@@ -47,6 +47,8 @@ class NewVisitorTest(unittest.TestCase):
 
         table = self.browser.find_element(By.ID, "id_list_table")
         rows = table.find_elements(By.TAG_NAME, "tr")
+        
+        self.fail("remove this line after finishing: http://www.obeythetestinggoat.com/book/chapter_04_philosophy_and_refactoring.html#_recap_the_tdd_process")
         self.assertTrue(
             any(row.text == "1: Buy peacock feathers" for row in rows),
             "New to-do item did not appear in table",
