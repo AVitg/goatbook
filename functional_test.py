@@ -2,9 +2,10 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
-from datetime import time
+import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+
 
 class NewVisitorTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -28,14 +29,12 @@ class NewVisitorTest(unittest.TestCase):
         # assert "To-Do" in browser.title
         # assert "To-Do" in browser.title, f"Browser title was {browser.title}"
         self.assertIn("To-Do", self.browser.title)
-        header_text = self.browser.find_element(By.TAG_NAME,"h1").text 
+        header_text = self.browser.find_element(By.TAG_NAME, "h1").text
         self.assertIn("To-Do", header_text)
 
         # She is invited to enter a to-do item straight away
-        input_box = self.browser.find_element(By.ID,"id_new_item")
-        self.assertEqual(input_box.get_attribute("placehoder"),"Enter to-do item")
-        
-        
+        input_box = self.browser.find_element(By.ID, "id_new_item")
+        self.assertEqual(input_box.get_attribute("placeholder"), "Enter a to-do item")
 
         # She types "Buy peacock feathers" into a text box
         # (Edith's hobby is tying fly-fishing lures)
@@ -46,9 +45,12 @@ class NewVisitorTest(unittest.TestCase):
         input_box.send_keys(Keys.ENTER)
         time.sleep(1)
 
-        table = self.browser.find_element(By.ID,"id_list_table")
-        rows = table.find_elements(By.TAG_NAME,"tr")
-        self.assertTrue(any(row.text == "1: Buy peacock feathers" for row in rows))
+        table = self.browser.find_element(By.ID, "id_list_table")
+        rows = table.find_elements(By.TAG_NAME, "tr")
+        self.assertTrue(
+            any(row.text == "1: Buy peacock feathers" for row in rows),
+            "New to-do item did not appear in table",
+        )
 
         # There is still a text box inviting her to add another item.
         # She enters "Use peacock feathers to make a fly" (Edith is very methodical)
@@ -109,12 +111,12 @@ if __name__ == "__main__":
 
 ## on VCS hygien
 # For me the main big of VCS hygiene is: make sure you always review what you’re about to commit before you do it.
-'''
+"""
 $ git status  # should show you lists/ is untracked
 $ git add lists
 $ git diff --staged  # will show you the diff that you're about to commit
 $ git commit -m "Add app for lists, with deliberately failing unit test"
-'''
+"""
 
 ## On refactoring (http://www.obeythetestinggoat.com/book/chapter_04_philosophy_and_refactoring.html)
-#martin Fowler’s Refactoring(http://refactoring.com/).
+# martin Fowler’s Refactoring(http://refactoring.com/).
