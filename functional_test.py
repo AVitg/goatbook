@@ -116,3 +116,5 @@ $ git diff --staged  # will show you the diff that you're about to commit
 $ git commit -m "Add app for lists, with deliberately failing unit test"
 '''
 
+## On refactoring (http://www.obeythetestinggoat.com/book/chapter_04_philosophy_and_refactoring.html)
+#martin Fowler’s Refactoring(http://refactoring.com/).
