@@ -91,3 +91,13 @@ if __name__ == "__main__":
 # The functional tests don’t aim to cover every single tiny detail of our app’s behaviour, they are there to reassure us that everything is wired up correctly. The unit tests are there to exhaustively check all the lower level details and corner cases.
 # !Functional tests should help you build an application that actually works, and guarantee you never accidentally break it. Unit tests should help you to write code that’s clean and bug free.
 ###
+
+## on VCS hygien
+# For me the main big of VCS hygiene is: make sure you always review what you’re about to commit before you do it.
+'''
+$ git status  # should show you lists/ is untracked
+$ git add lists
+$ git diff --staged  # will show you the diff that you're about to commit
+$ git commit -m "Add app for lists, with deliberately failing unit test"
+'''
+
