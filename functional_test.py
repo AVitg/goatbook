@@ -69,3 +69,25 @@ if __name__ == "__main__":
 ## about errors: (http://www.obeythetestinggoat.com/book/chapter_03_unit_test_first_view.html)
 # Zed Shaw memorably insisted in Learn Python The Hard Way(https://learnpythonthehardway.org/),
 # this kind of debugging is also an absolutely vital part of learning, so do stick it out!
+
+
+## about difference bw unit and functional test (http://www.obeythetestinggoat.com/book/chapter_03_unit_test_first_view.html)
+# Unit Tests, and How They Differ from Functional Tests
+#
+# As with so many of the labels we put on things, the line between unit tests and functional tests can become a little blurry at times.
+# The basic distinction, though, is that functional tests test the application from the outside, from the user’s point of view.
+# Unit tests test the application from the inside, from the programmer’s point of view.
+#
+# The TDD approach I’m demonstrating uses both types of test to drive the development of our application, and ensure its correctness.
+# Our workflow will look a bit like this:
+#
+#   1)We start by writing a functional test, describing a typical example of our new functionality from the user’s point of view.#
+#   2)Once we have a functional test that fails, we start to think about how to write code that can get it to pass (or at least to get past its current failure). We now use one or more unit tests to define how we want our code to behave—​the idea is that each line of production code we write should be tested by (at least) one of our unit tests.
+#   3)Once we have a failing unit test, we write the smallest amount of application code we can, just enough to get the unit test to pass. We may iterate between steps 2 and 3 a few times, until we think the functional test will get a little further.
+#   4)Now we can rerun our functional tests and see if they pass, or get a little further. That may prompt us to write some new unit tests, and some new code, and so on.
+#   5)Once we’re comfortable that the core functionality works end-to-end, we can extend out to cover more permutations and edge cases, using just unit tests now.
+#
+# You can see that, all the way through, the functional tests are driving what development we do from a high level, while the unit tests drive what we do at a low level.
+# The functional tests don’t aim to cover every single tiny detail of our app’s behaviour, they are there to reassure us that everything is wired up correctly. The unit tests are there to exhaustively check all the lower level details and corner cases.
+# !Functional tests should help you build an application that actually works, and guarantee you never accidentally break it. Unit tests should help you to write code that’s clean and bug free.
+###
