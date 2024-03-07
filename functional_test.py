@@ -17,8 +17,7 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.quit()
         return
 
-    def test_can_start_a_todo_list(self):
-
+    def test_can_start_a_todo_list(self) -> None:
         # Edith has heard about a cool new online to-do app.
         # She goes to check out its homepage
         self.browser.get("http://localhost:8000")
