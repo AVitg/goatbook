@@ -11,7 +11,7 @@ class NewVisitorTest(unittest.TestCase):
     def setUp(self) -> None:
         super().setUp()
         FFoptions = Options()
-        FFoptions.add_argument("--headless")
+        # FFoptions.add_argument("--headless")
         FFservice = Service(executable_path="/snap/bin/geckodriver")
         self.browser = webdriver.Firefox(options=FFoptions, service=FFservice)
 
@@ -38,7 +38,7 @@ class NewVisitorTest(unittest.TestCase):
 
         # She types "Buy peacock feathers" into a text box
         # (Edith's hobby is tying fly-fishing lures)
-        input_box.send_keys("buy peacock feathers")
+        input_box.send_keys("Buy peacock feathers")
 
         # When she hits enter, the page updates, and now the page lists
         # "1: Buy peacock feathers" as an item in a to-do list
@@ -47,16 +47,34 @@ class NewVisitorTest(unittest.TestCase):
 
         table = self.browser.find_element(By.ID, "id_list_table")
         rows = table.find_elements(By.TAG_NAME, "tr")
-        
-        self.fail("remove this line after finishing: http://www.obeythetestinggoat.com/book/chapter_04_philosophy_and_refactoring.html#_recap_the_tdd_process")
-        self.assertTrue(
+
+        # self.fail("remove this line after finishing: http://www.obeythetestinggoat.com/book/chapter_04_philosophy_and_refactoring.html#_recap_the_tdd_process")
+
+        """self.assertTrue(
             any(row.text == "1: Buy peacock feathers" for row in rows),
-            "New to-do item did not appear in table",
-        )
+            f"New to-do item did not appear in table Contents were:\n {table.text}",
+        )"""
+        self.assertIn("1: Buy peacock feathers", [row.text for row in rows])
 
         # There is still a text box inviting her to add another item.
         # She enters "Use peacock feathers to make a fly" (Edith is very methodical)
-        self.fail("Finish the test!")
+
+        inputbox = self.browser.find_element(By.ID, "id_new_item")
+        inputbox.send_keys("Use peacock feathers to make a fly")
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+
+        # The page updates again, and now shows both items on her list
+        table = self.browser.find_element(By.ID, "id_list_table")
+        rows = table.find_elements(By.TAG_NAME, "tr")
+        self.assertIn(
+            "1: Buy peacock feathers",
+            [row.text for row in rows],
+        )
+        self.assertIn(
+            "2: Use peacock feathers to make a fly",
+            [row.text for row in rows],
+        )
 
         # The page updates again, and now shows both items on her list
 
@@ -122,3 +140,17 @@ $ git commit -m "Add app for lists, with deliberately failing unit test"
 
 ## On refactoring (http://www.obeythetestinggoat.com/book/chapter_04_philosophy_and_refactoring.html)
 # martin Fowler’s Refactoring(http://refactoring.com/).
+
+
+# a word on sec/hacking http://www.obeythetestinggoat.com/book/chapter_05_post_and_database.html
+# I want to recommend the textbook from that course,
+# Ross Anderson’s Security Engineering_.
+# https://www.cl.cam.ac.uk/~rja14/book.html
+# It’s quite light on pure crypto, but it’s absolutely full of interesting
+# discussions of unexpected topics like lock picking,
+# forging bank notes, inkjet printer cartridge economics,
+# and spoofing South African Air Force jets with replay attacks.
+# It’s a huge tome, about three inches thick, and I promise you it’s an absolute page-turner.
+
+# http://www.obeythetestinggoat.com/book/chapter_05_post_and_database.html#three_strikes_and_refactor
+# See also Three Strikes and Refactor for a further note of caution on applying DRY too quickly.
