@@ -156,3 +156,13 @@ $ git commit -m "Add app for lists, with deliberately failing unit test"
 
 # http://www.obeythetestinggoat.com/book/chapter_05_post_and_database.html#three_strikes_and_refactor
 # See also Three Strikes and Refactor for a further note of caution on applying DRY too quickly.
+
+
+
+ #"Geepaw" Hill, another one of the TDD OGs, has a series of blog posts advocating for taking "Many More Much Smaller Steps (MMMSS)
+ #https://www.geepawhill.org/2021/09/29/many-more-much-smaller-steps-first-sketch/
+ 
+ 
+ #ons code smells
+ # If you’ve not come across the concept, a "code smell" is something about a piece of code that makes you want to rewrite it. Jeff Atwood has a compilation on his blog Coding Horror. The more experience you gain as a programmer, the more fine-tuned your nose becomes to code smells…​ 
+ # https://blog.codinghorror.com/code-smells/
